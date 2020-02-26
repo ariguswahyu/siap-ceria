@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-function Cek() {
+function Jut() {
     return (
         <div>
-            <h1>Cekin gan</h1>
+            <h1>Jut</h1>
         </div>
     );
 }
 
-export default Cek;
+export default Jut;
