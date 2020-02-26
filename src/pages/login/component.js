@@ -3,6 +3,19 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 
+
+const handleLogin = function (event) {
+    let data = {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value
+    };
+
+    console.log(data);
+    event.preventDefault();
+};
+
+
+
 function Login() {
     return (
         <form action="">
@@ -26,10 +39,11 @@ function Login() {
                 variant="contained"
                 color="primary"
                 type="submit"
-                onClick={
-                    function () {
-                        alert("oke");
-                    }}
+                onClick={handleLogin}
+            // onClick={
+            //     function () {
+            //         alert("oke");
+            //     }}
             >
                 Submit
       </Button>
