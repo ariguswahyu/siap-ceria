@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, withRouter } from "react-router-dom";
 import Login from './pages/login';
-
+import { Switch, Route, withRouter } from "react-router-dom";
 import SplashScreen from './pages/splashscreen';
 import Home from './pages/home';
 import './App.css';
@@ -28,15 +28,18 @@ function App(props) {
   }
 
   return (
-    <div className="App">
-      <React.Fragment>
+    <div>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/" exact={true}>
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/">
+          <h1>Error 404 | Page Not Found</h1>
+        </Route>
       </Switch>
-      {/* {homeRoute.indexOf(props.location.pathname) !== -1 && <BottomNavigation />} */}
-    </React.Fragment>
-      {/* <Home /> */}
     </div>
   );
 }
