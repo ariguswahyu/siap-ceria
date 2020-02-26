@@ -16,7 +16,7 @@ function App(props) {
       console.log("login");
     } else {
       console.log("belum login");
-     props.history.push("/login");
+      props.history.push("/login");
     }
     setTimeout(() => {
       setIsLoading(false);
