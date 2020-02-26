@@ -10,10 +10,7 @@ const handleLogin = function (event) {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value
     };
-
     console.log(data);
-
-
     // INI ADALAH BENTUK PROMISE JAVASCRIPT
     Axios.get("https://api.github.com/users/" + data.username, {
         //
@@ -21,7 +18,7 @@ const handleLogin = function (event) {
         .then(function (response) {
             console.log("---- FUNGSI INI MEMANGGIL IDNTITAS AKUN GITHUB LEWAT REST -");
             console.log("---- ini adalah tangkapan dari rest--");
-            console.log(response);
+            console.log(response.data);
             console.log("---- --- --");
         })
         .catch(function (error) {
