@@ -21,7 +21,7 @@ function App(props) {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
   }, []);
   if (isLoading === true) {
     return <SplashScreen />;
