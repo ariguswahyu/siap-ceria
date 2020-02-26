@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Login from './pages/login';
 import SplashScreen from './pages/splash-screen';
+import Home from './pages/home';
 import './App.css';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Login />
+      <Home />
     </div>
   );
 }
