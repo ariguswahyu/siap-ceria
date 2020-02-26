@@ -1,0 +1,40 @@
+import React from 'react';
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+
+
+function Login() {
+    return (
+        <form action="">
+            <TextField
+                type="text"
+                label="Username"
+                variant="outlined"
+                id="username"
+                placeholder="isi username"
+            />
+
+            <TextField
+                type="password"
+                label="Password"
+                variant="outlined"
+                id="password"
+                placeholder="isi password"
+            />
+
+            <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                onClick={
+                    function () {
+                        alert("oke");
+                    }}
+            >
+                Submit
+      </Button>
+        </form>
+    );
+}
+
+export default Login;
