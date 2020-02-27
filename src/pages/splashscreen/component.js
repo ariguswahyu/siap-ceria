@@ -4,7 +4,7 @@ import Ecclipse from "../../assets/Ellipse.png";
 import Logo from "../../assets/logors111.png";
 import useStyles from "./style";
 
-function SplashScreen() {
+function SplashScreen(props) {
   const classes = useStyles();
   return (
     <Container maxWidth="xs" className={classes.Container}>

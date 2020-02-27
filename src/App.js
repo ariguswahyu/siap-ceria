@@ -4,7 +4,7 @@ import Login from './pages/login';
 import SplashScreen from './pages/splashscreen';
 import Profile from './pages/profile';
 import Home from './pages/home';
-import './App.css';
+// import './App.css';
 import BottomNavigation from "./component/bottom-navigation";
 
 function App(props) {
@@ -35,7 +35,8 @@ function App(props) {
         <Route path="/" exact={true} component={Home} />
         <Route path="/login" exact={true} component={Login} />
         <Route path="/profile" exact={true} component={Profile} />
-        <Route path="/" > <h1>Error 404 | Page Not Found</h1></Route>
+        <Route path="/home" exact={true} component={Profile} />
+        {/* <Route path="/" > <h1>Error 404 | Page Not Found</h1></Route> */}
       </Switch>
       {homeRoute.indexOf(props.location.pathname) !== -1 && <BottomNavigation />}
     </React.Fragment>
