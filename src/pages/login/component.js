@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from "react";
+// import swal from 'sweetalert2'
+import swal from "sweetalert";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
@@ -39,34 +41,47 @@ import { login } from "../../services/login";
 
 
 
-const handleLogin = async () => {
 
-  const data = {
-    username: document.getElementById("username").value,
-    password: document.getElementById("password").value
+
+
+
+function Login(props) {
+
+
+  useEffect(() => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("userToken");
+  }, []);
+
+  const handleLogin = async () => {
+
+    const data = {
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value
+    };
+
+
+    login(data)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("userToken", "Bearer " + res.token);
+        localStorage.setItem("login", true);
+        let localStorageku = localStorage.getItem('userToken');
+        console.log("ini lokal storage : " + localStorageku);
+        swal("Great!", "You logged!", "success");
+        //swal.fire('Great!', 'You logged!', 'success')
+        this.props.history.push("/");
+
+      })
+      .catch(error => {
+        if (error.response === "Unauthorized") {
+          console.log(error.response);
+          // return swal("The Email or Password is invalid, Please try again");
+        }
+      });
   };
 
 
-  login(data)
-    .then(res => {
-      console.log(res);
-      localStorage.setItem("userToken", "Bearer " + res.token);
-      localStorage.setItem("login", true);
-      let localStorageku = localStorage.getItem('userToken');
-      console.log("ini lokal storage : " + localStorageku);
-
-    })
-    .catch(error => {
-      if (error.response === "Unauthorized") {
-        console.log(error.response);
-        // return swal("The Email or Password is invalid, Please try again");
-      }
-    });
-};
-
-
-
-function Login() {
   const classes = useStyles();
   return (
     //     <form action="">
