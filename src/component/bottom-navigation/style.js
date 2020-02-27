@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
+
+  
   stickToBottom: {
     width: "100%",
     maxWidth: 446,

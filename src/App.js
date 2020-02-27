@@ -10,7 +10,7 @@ import BottomNavigation from "./component/bottom-navigation";
 function App(props) {
 
   const [isLoading, setIsLoading] = React.useState(true);
-  // const homeRoute = ["/", "/pilih-loket", "/profil", "/riwayat"];
+  const homeRoute = ["/", "/pilih-loket", "/profil", "/riwayat"];
 
   useEffect(() => {
     if (localStorage.getItem("userToken")) {
@@ -30,22 +30,15 @@ function App(props) {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <Switch>
-        <Route path="/" exact={true}>
-          <Home />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/">
-          <h1>Error 404 | Page Not Found</h1>
-        </Route>
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/login" exact={true} component={Login} />
+        <Route path="/profile" exact={true} component={Profile} />
+        <Route path="/" > <h1>Error 404 | Page Not Found</h1></Route>
       </Switch>
-    </div>
+      {homeRoute.indexOf(props.location.pathname) !== -1 && <BottomNavigation />}
+    </React.Fragment>
   );
 }
 
