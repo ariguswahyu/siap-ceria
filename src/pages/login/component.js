@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 // import swal from 'sweetalert2'
+import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -43,8 +44,7 @@ function Login(props) {
         let localStorageku = localStorage.getItem('userToken');
         console.log("ini lokal storage : " + localStorageku);
         swal("Great!", "You logged!", "success");
-        //swal.fire('Great!', 'You logged!', 'success')
-        this.props.history.push("/");
+        props.history.push("/");
 
       })
       .catch(error => {
@@ -126,5 +126,5 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default withRouter(Login);
 

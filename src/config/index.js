@@ -1,7 +1,9 @@
 import Axios from "axios";
 
-const token = localStorage.getItem("userToken");
-export const axiosInstance = Axios.create({
+let token = localStorage.getItem("userToken");
+
+
+export let axiosInstance = Axios.create({
     baseURL: "http://localhost/api.simrs.rsudajibarang/api/auth/"
 });
 
