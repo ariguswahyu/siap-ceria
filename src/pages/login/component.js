@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from "react";
+// import swal from 'sweetalert2'
+import { withRouter } from "react-router-dom";
+import swal from "sweetalert";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
@@ -12,93 +15,49 @@ import { login } from "../../services/login";
 
 
 
-// const handleLogin = function (event) {
-//     let data = {
-//         username: document.getElementById("username").value,
-//         password: document.getElementById("password").value
-//     };
-//     console.log(data);
-//     // INI ADALAH BENTUK PROMISE JAVASCRIPT
-//     Axios.get("https://api.github.com/users/" + data.username, {
-//         //
-//     })
-//         .then(function (response) {
-//             console.log("---- FUNGSI INI MEMANGGIL IDNTITAS AKUN GITHUB LEWAT REST -");
-//             console.log("---- ini adalah tangkapan dari rest--");
-//             console.log(response.data);
-//             console.log("---- --- --");
-//         })
-//         .catch(function (error) {
-//             console.log(error);
-//         })
-//         .finally(function () { });
-
-
-//     event.preventDefault();
-// };
 
 
 
-const handleLogin = async () => {
 
-  const data = {
-    username: document.getElementById("username").value,
-    password: document.getElementById("password").value
+
+function Login(props) {
+
+
+  useEffect(() => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("userToken");
+  }, []);
+
+  const handleLogin = async () => {
+
+    const data = {
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value
+    };
+
+
+    login(data)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("userToken", "Bearer " + res.token);
+        localStorage.setItem("login", true);
+        let localStorageku = localStorage.getItem('userToken');
+        console.log("ini lokal storage : " + localStorageku);
+        swal("Great!", "You logged!", "success");
+        props.history.push("/");
+
+      })
+      .catch(error => {
+        if (error.response === "Unauthorized") {
+          console.log(error.response);
+          // return swal("The Email or Password is invalid, Please try again");
+        }
+      });
   };
 
 
-  login(data)
-    .then(res => {
-      console.log(res);
-      localStorage.setItem("userToken", "Bearer " + res.token);
-      localStorage.setItem("login", true);
-      let localStorageku = localStorage.getItem('userToken');
-      console.log("ini lokal storage : " + localStorageku);
-
-    })
-    .catch(error => {
-      if (error.response === "Unauthorized") {
-        console.log(error.response);
-        // return swal("The Email or Password is invalid, Please try again");
-      }
-    });
-};
-
-
-
-function Login() {
   const classes = useStyles();
   return (
-    //     <form action="">
-    //         <TextField
-    //             type="text"
-    //             label="Username"
-    //             variant="outlined"
-    //             id="username"
-    //             placeholder="isi username github"
-    //         />
-
-    //         <TextField
-    //             type="password"
-    //             label="Password"
-    //             variant="outlined"
-    //             id="password"
-    //             placeholder="isi password"
-    //         />
-
-    //         <Button
-    //             variant="contained"
-    //             color="primary"
-    //             type="submit"
-    //             onClick={handleLogin}
-    //         // onClick={
-    //         //     function () {
-    //         //         alert("oke");
-    //         //     }}
-    //         >
-    //             Submit
-    //   </Button>
-    //     </form>
     <Container maxWidth="xs" className={classes.container}>
       <Grid className={classes.container}>
         <Grid container>
@@ -167,5 +126,5 @@ function Login() {
   );
 }
 
-export default Login;
+export default withRouter(Login);
 
