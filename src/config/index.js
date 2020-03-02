@@ -4,7 +4,7 @@ let token = localStorage.getItem("userToken");
 
 
 export let axiosInstance = Axios.create({
-    baseURL: "http://localhost/api.simrs.rsudajibarang/api/auth/"
+    baseURL: "http://localhost/api.simrs.rsudajibarang/api/"
 });
 
 axiosInstance.interceptors.request.use(config => {
@@ -20,7 +20,7 @@ axiosInstance.interceptors.request.use(config => {
 
 axiosInstance.interceptors.response.use(
     function (response) {
-        // console.log(response.data);
+        console.log(response.data);
         return response.data;
     },
     function (error, props) {

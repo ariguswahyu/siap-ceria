@@ -14,7 +14,7 @@ function Home(props) {
     const name = "Embe Setiawan"
     const nik = "3304030408950004";
 
-    
+
     return (
 
         <Container maxWidth="xs" className={classes.container}>
@@ -30,7 +30,7 @@ function Home(props) {
                             <Grid item xs={2} className={classes.image} align="center">
                                 <img src={Profile} alt="avatar" />
                             </Grid>
-                            <Grid item xs={0} className={classes.gridName}>
+                            <Grid item xs={false} className={classes.gridName}>
                                 <Typography className={classes.name}>{name}</Typography>
                                 <Typography className={classes.nik}>NIK: {nik}</Typography>
                             </Grid>

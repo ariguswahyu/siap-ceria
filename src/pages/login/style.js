@@ -5,89 +5,49 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "100vh",
     display: "flex",
-    flex: "1",
     padding: 0,
     flexDirection: "column",
-    backgroundSize: "cover",
-    background: "#80F947"
-  },
-  image: {
-    width: "100%"
-  },
-  gridBottom: {
-    display: "flex",
-    flexDirection: "row"
-  },
-  textTop: {
-    fontSize: "24px",
-    paddingLeft: "6%",
-    paddingBottom: "5%",
-    fontWeight: "bold"
-  },
-  button: {
-    fontSize: "15px",
-    width: "90%",
-    height: 48,
-    boxShadow: "0px 0px 2px #c1b1b1",
-    border: "1px solid #F7A647",
-    borderRadius: "4px"
+    backgroundSize: "cover"
   },
   buttonBottom: {
+    fontFamily: "Montserrat, sans-serif",
     fontSize: "15px",
     width: "90%",
     height: 48,
     boxShadow: "0px 0px 2px #c1b1b1",
     border: "1px solid #F7A647",
     borderRadius: "4px"
-  },
-  buttonBox: {
-    flexDirection: "column",
-    display: "flex",
-    alignItems: "center"
-  },
-  textButton: {
-    color: "#F7A647",
-    fontSize: "16px",
-    textTransform: "none",
-    paddingLeft: "2em"
   },
   textButtonBottom: {
     color: "#FFFFFF",
+    fontFamily: "Google Sans, sans-serif",
     fontSize: "16px",
     textTransform: "none",
-    paddingLeft: "2em"
-  },
-  gridButton: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: "1em"
-  },
-  logo: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    color: "#FFFFFF"
+    fontWeight: "bold"
   },
   buttonBoxBottom: {
-    paddingTop: "4%",
-    flexDirection: "column",
-    display: "flex",
-    alignItems: "center"
+    marginTop: "1em"
   },
-  logoEmail: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    color: "#FFFFFF",
-    paddingLeft: "0.4em"
+  login: {
+    paddingLeft: "15px",
+    fontSize: "16px",
+    fontWeight: "bold"
   },
-  logorsud: {
-    position: "absolute",
-    width: "313px",
-    height: "263px",
-    left: "36px",
-    top: "80px",
+  password: {
+    paddingTop: "1em"
   },
+  email: {
+    paddingTop: "1.5em"
+  },
+  appbar: {
+    backgroundColor: "#26CAC0",
+    width: "100%",
+    top: 0,
+    maxWidth: 448,
+    justifyContent: "center",
+    height: "56px",
+    boxShadow: "none"
+  }
 }));
 
 export default useStyles;
