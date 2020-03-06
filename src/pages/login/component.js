@@ -1,10 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-// import swal from 'sweetalert2'
 import { withRouter } from "react-router-dom";
-import swal from "sweetalert";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Axios from "axios";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -12,15 +9,10 @@ import Box from "@material-ui/core/Box";
 import useStyles from "./style";
 import LoginImage from "../../assets/logors111.png";
 import { login } from "../../services/login";
-
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-import Ilustrasi from "../../assets/login-ilustrasi.png";
-
-
 import AppBar from "@material-ui/core/AppBar";
 import { Toolbar } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -32,43 +24,31 @@ import IconButton from "@material-ui/core/IconButton";
 function Login(props) {
 
   const [loading, setLoading] = useState(false);
-  //const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    // localStorage.removeItem("user");
-    // localStorage.removeItem("userToken");
+    // NANTI SINI SIMPAN DI LOKAL STROGE YA
   }, []);
 
-  const handleLogin = () => {
+  const handleLogin = (event) => {
 
     const data = {
       username: document.getElementById("username").value,
       password: document.getElementById("password").value
     };
-
+    console.log("ini inputnya");
     console.log(data);
-
     login(data).
       then((res) => {
+
+        console.log("ini responnya");
         console.log(res);
       }).
       catch((error) => {
         console.log(error);
       });
 
-    // Axios.post('http://localhost/api.simrs.rsudajibarang/api/auth/login', {
-    //   username: data.username,
-    //   password: data.password
-    // })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
-    //event.preventDefault();
+    event.preventDefault();
   };
   const classes = useStyles();
 
