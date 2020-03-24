@@ -11,8 +11,12 @@ function Home(props) {
     const classes = useStyles();
 
     const user = "embeuye";
-    const name = "Embe Setiawan"
+    const name = "Rizki Alip Suryanto"
     const nik = "3304030408950004";
+
+    // const user = JSON.parse(localStorage.getItem("user"));
+    // const nik = JSON.parse(localStorage.getItem("nik"));
+    // const name = JSON.parse(localStorage.getItem("name"));
 
 
     return (

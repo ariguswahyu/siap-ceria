@@ -24,7 +24,7 @@ function BottomNavigationApp(props) {
       case "/home":
         setValue(1);
         return;
-      case "/profile":
+      case "/profil":
         setValue(2);
         return;
       default:
@@ -39,10 +39,10 @@ function BottomNavigationApp(props) {
         props.history.push("/");
         return;
       case 1:
-        props.history.push("/home");
+        props.history.push("/riwayat");
         return;
       case 2:
-        props.history.push("/profile");
+        props.history.push("/profil");
         return;
       default:
         return;
@@ -114,7 +114,7 @@ function BottomNavigationApp(props) {
         />
         <BottomNavigationAction
           component={Link}
-          to="/profile"
+          to="/profil"
           label="Profile"
           value="2"
           icon={

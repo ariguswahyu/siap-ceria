@@ -11,7 +11,7 @@ import { ThemeProvider } from "@material-ui/styles";
 
 const theme = createMuiTheme({
     typography: {
-        fontFamily: "Product Sans"
+        fontFamily: "Montserrat"
     }
 });
 

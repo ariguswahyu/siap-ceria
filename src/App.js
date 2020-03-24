@@ -10,18 +10,13 @@ import Home from './pages/home';
 function App(props) {
 
   const [isLoading, setIsLoading] = React.useState(true);
-  const homeRoute = ["/", "/home", "/profile", "/login"];
-
-
-  // const handleBack = () => {
-  //   props.history.push("/");
-  // };
+  const homeRoute = ["/", "/pilih-loket", "/profil", "/riwayat"];
 
   useEffect(() => {
     if (localStorage.getItem("userToken")) {
       console.log("login");
-      let localStorageku = localStorage.getItem('userToken');
-      console.log("ini lokal storage : " + localStorageku);
+      // let localStorageku = localStorage.getItem('userToken');
+      // console.log("ini lokal storage : " + localStorageku);
     } else {
       console.log("belum login");
       props.history.push("/login");
@@ -39,7 +34,7 @@ function App(props) {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/home" exact component={Home} />
-        <Route path="/profile" exact component={Profile} />
+        <Route path="/profil" exact component={Profile} />
         <Route path="/login" exact component={Login} />
       </Switch>
       {homeRoute.indexOf(props.location.pathname) !== -1 && <BottomNavigation />}

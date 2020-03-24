@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import useStyles from "./style";
-import LoginImage from "../../assets/logors111.png";
+import LoginImage from "../../assets/loginbackground.png";
 import { login } from "../../services/login";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -18,6 +18,9 @@ import { Toolbar } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
+import swal from "sweetalert";
+import Axios from "axios";
+import Qs from "qs";
 
 
 
@@ -30,26 +33,25 @@ function Login(props) {
     // NANTI SINI SIMPAN DI LOKAL STROGE YA
   }, []);
 
-  const handleLogin = (event) => {
-
-    const data = {
+  const handleLogin = async () => {
+    setLoading(true);
+    let data = {
       username: document.getElementById("username").value,
       password: document.getElementById("password").value
     };
-    console.log("ini inputnya");
-    console.log(data);
-    login(data).
-      then((res) => {
 
-        console.log("ini responnya");
+    login(Qs.stringify(data)).
+      then((res) => {
         console.log(res);
       }).
       catch((error) => {
-        console.log(error);
+        setLoading(false);
+        //swal(error.response.statusText, error.response.data.metaData.message, "error");
+        console.log(error.response);
       });
-
-    event.preventDefault();
   };
+
+
   const classes = useStyles();
 
   const handleBack = () => {
@@ -60,7 +62,7 @@ function Login(props) {
   return (
     <Container maxWidth="xs" className={classes.container}>
       <Grid className={classes.container}>
-        <AppBar
+        {/* <AppBar
           position="static"
           className={classes.appbar}
           onClick={handleBack}
@@ -69,13 +71,13 @@ function Login(props) {
             <ArrowBackIcon />
             <Typography className={classes.login}> Login</Typography>
           </Toolbar>
-        </AppBar>
+        </AppBar> */}
         <img
           src={LoginImage}
           alt=""
           style={{
             marginTop: -30,
-            height: 320
+            height: 420
           }}
         />
 
@@ -145,12 +147,24 @@ function Login(props) {
           </Typography>
         </Grid>
       </Grid>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <div className={classes.boxButton}>
+          <b style={{ color: "#26CAC0" }} > - RSUD AJIBARANG - </b>
+        </div>
+      </div>
+
+
       <Dialog open={loading} onClose={() => setLoading(false)}>
         <DialogContent>
-          <div align="center" style={{ margin: 10 }}>
+          <div align="center" style={{ margin: 30 }}>
             <CircularProgress />
           </div>
-
           <DialogContentText id="alert-dialog-description">
             Harap tunggu...
           </DialogContentText>

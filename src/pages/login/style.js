@@ -47,6 +47,14 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     height: "56px",
     boxShadow: "none"
+  },
+  boxButton: {
+    position: "fixed",
+    bottom: "15px",
+    display: "flex",
+    justifyContent: "center",
+    width: "85%",
+    maxWidth: "448px"
   }
 }));
 
